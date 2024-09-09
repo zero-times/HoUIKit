@@ -26,7 +26,7 @@ extension Foundation.Bundle {
         ]
         
         for candidate in candidates {
-            let bundlePathiOS = candidate?.appendingPathComponent(bundleNameIOS + ".bundle")
+            let bundlePathiOS = candidate?.appendingPathComponent(bundleNameIOS + ".xcassets")
             if let bundle = bundlePathiOS.flatMap(Bundle.init(url:)) {
                 return bundle
             }
