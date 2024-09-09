@@ -66,8 +66,8 @@ public class HoCommonCheckRowView: UIControl {
     //MARK: 选中框
     public lazy var checkButton: UIButton = {
         let checkButton = UIButton()
-        let disableImage = UIImage(named: "single_check")
-        let normalImage = UIImage(named: "single_is_selected")
+        let disableImage = UIImage(named: "single_check", in: .myModule, compatibleWith: nil)
+        let normalImage = UIImage(named: "single_is_selected", in: .myModule, compatibleWith: nil)
         checkButton.setImage(disableImage, for: .disabled)
         checkButton.setImage(normalImage, for: .normal)
         return checkButton

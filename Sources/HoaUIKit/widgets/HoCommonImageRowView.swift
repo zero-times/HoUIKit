@@ -62,7 +62,7 @@ public class HoCommonImageRowView: UIControl {
     }()
     
     lazy var rightArrow: UIImageView = {
-        let rightArrow = UIImageView(image: .init(named: "set_icon_arrow"))
+        let rightArrow = UIImageView(image: .init(named: "set_icon_arrow", in: .myModule, compatibleWith: nil))
         rightArrow.contentMode = .scaleAspectFit
         return rightArrow
     }()
