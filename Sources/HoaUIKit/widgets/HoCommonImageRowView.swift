@@ -1,26 +1,23 @@
 //
-//  SPCCommonFullTextRowView.swift
-//  SkyPiCameraiOSProject
+//  HoCommonImageRowView.swift
+//  
 //
-//  Created by HOA on 2024/5/11.
-//  Copyright © 2024 skyworth. All rights reserved.
+//  Created by HOA on 2024/9/9.
 //
 
 import UIKit
 import SnapKit
 
-public class HoCommonFullTextRowView: UIControl {
+public class HoCommonImageRowView: UIControl {
     
     //MARK:- 属性 -
     
     let title: String
     let subtitle: String
-    let detail: String
     
-    public init(_ title: String, subtitle: String, detail: String) {
+    public init(_ title: String, subtitle: String) {
         self.title = title
         self.subtitle = subtitle
-        self.detail = detail
         super.init(frame: .zero)
         setupUI()
         layoutViews()
@@ -42,21 +39,19 @@ public class HoCommonFullTextRowView: UIControl {
     public lazy var leftSubTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.designKit.systemFont(ofSize: 14)
-        label.adjustsFontForContentSizeCategory = true        
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = UIColor.dynamicColor(light: UIColor(rgbValue: 0x000000, alpha: 0.6), dark: UIColor(rgbValue: 0xFFFFFF, alpha: 0.6))
         label.text = subtitle
         label.numberOfLines = 0
         return label
     }()
     
-    public lazy var detailLabel: HoSnpWidthLabel = {
-        let detailLabel = HoSnpWidthLabel()
-        detailLabel.font = UIFont.designKit.systemFont(ofSize: 14)
-        detailLabel.adjustsFontForContentSizeCategory = true
-        detailLabel.textColor = UIColor.Palette.secondaryTextColor
-        detailLabel.text = detail
-        detailLabel.textAlignment = .right
-        return detailLabel
+    public lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 8
+        imageView.layer.masksToBounds = true
+        return imageView
     }()
     
     private lazy var container: UIView = {
@@ -95,7 +90,7 @@ public class HoCommonFullTextRowView: UIControl {
         container.addSubview(leftTitle)
         container.addSubview(leftSubTitle)
         container.addSubview(rightArrow)
-        container.addSubview(detailLabel)
+        container.addSubview(imageView)
     }
     
     private func layoutViews() {
@@ -115,7 +110,7 @@ public class HoCommonFullTextRowView: UIControl {
             make.top.equalTo(leftTitle.snp.bottom).offset(2)
             make.bottom.equalTo(-12)
             make.height.greaterThanOrEqualTo(14)
-            make.right.equalTo(detailLabel.snp.left).offset(-16)
+            make.right.equalTo(imageView.snp.left).offset(-16)
         }
         
         rightArrow.snp.makeConstraints { make in
@@ -125,15 +120,15 @@ public class HoCommonFullTextRowView: UIControl {
             make.centerY.equalToSuperview()
         }
         
-        detailLabel.snp.makeConstraints { make in
+        imageView.snp.makeConstraints { make in
             make.right.equalTo(rightArrow.snp.left).offset(-4)
-            make.width.greaterThanOrEqualTo(40)
+            make.width.height.equalTo(44)
             make.centerY.equalToSuperview()
         }
     }
 }
 
-extension HoCommonFullTextRowView: HoCommonDisplayProtocol {
+extension HoCommonImageRowView: HoCommonDisplayProtocol {
     
     public func updateViewShow(isShow: Bool) {
         self.isHidden = !isShow

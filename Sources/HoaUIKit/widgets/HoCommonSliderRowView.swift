@@ -69,7 +69,7 @@ public class HoCommonSliderRowView: UIView {
         let slider = UISlider()
         slider.tintColor =  UIColor.dynamicColor(light: UIColor(rgbValue: 0x256FFF, alpha: 1), dark: UIColor(rgbValue: 0x5790FF, alpha: 1))
         slider.maximumValue = 10
-        slider.setThumbImage(.init(named: "Knob"), for: .normal)
+//        slider.setThumbImage(.init(named: "Knob"), for: .normal)
         return slider
     }()
     
