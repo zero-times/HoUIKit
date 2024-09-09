@@ -38,5 +38,8 @@ final class HoaUIKitTests: XCTestCase {
     func testHoSnpWidthLabel() throws {
         _ = HoSnpWidthLabel()
     }
-    
+    func testImage() throws {
+        let image = UIImage(named: "Knob", in: .init(path: "Sources/Assets/assets.xcassets"), compatibleWith: nil)
+        print(image)
+    }
 }
