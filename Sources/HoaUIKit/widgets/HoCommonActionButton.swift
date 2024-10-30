@@ -33,7 +33,7 @@ public class HoCommonActionButton: UIButton {
     
     private let type: HoCommonActionButtonType
     
-    public init(_ type: HoCommonActionButtonType, size: CGSize = CGSize(width:  (UIDevice.current.userInterfaceIdiom == .pad ? (375 - 60) : UIScreen.main.bounds.size.width - 60) / 2, height: 44)) {
+    public init(_ type: HoCommonActionButtonType, size: CGSize = CGSize(width:  (UIDevice.current.userInterfaceIdiom == .pad ? (375 - 60) : min(UIScreen.main.bounds.size.width,UIScreen.main.bounds.size.height) - 60) / 2, height: 44)) {
         self.gSize = size
         self.type = type
         super.init(frame: .zero)
